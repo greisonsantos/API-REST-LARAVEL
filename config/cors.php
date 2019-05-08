@@ -11,7 +11,8 @@ return [
     | to accept any value.
     |
     */
-   
+    // 'allowedOrigins' => ['*'], dominio que poderar acessar a api
+    
     'supportsCredentials' => false,
     'allowedOrigins' => ['*'],
     'allowedOriginsPatterns' => [],

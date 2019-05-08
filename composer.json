@@ -11,7 +11,8 @@
         "intervention/image": "^2.4",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
-        "lucascudo/laravel-pt-br-localization": "dev-master"
+        "lucascudo/laravel-pt-br-localization": "dev-master",
+        "tymon/jwt-auth": "1.0.*"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
