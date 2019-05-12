@@ -1,20 +1,21 @@
 <?php
 
-//assim
-// Route::get('clientes','Api\ClienteApiController@index');
-//ou 
+ //baixar cors 
+ // composer require barryvdh/laravel-cors
+ // add no kernel o middleware
+ // gerar arquivo de configuração
+ // configura  em config /cors
 
-//restringindo rotas de acesdo da api
-$this->group(['namespace'=>'Api'], function(){
-    $this->apiResource('clientes','ClienteApiController');
+
+Route::post('login', 'Auth\AuthenticateController@authenticate');
+Route::get('me', 'Auth\AuthenticateController@getAuthenticatedUser');
+Route::post('login-refresh', 'Auth\AuthenticateController@refreshToken');
+
+
+//restringindo aceso a api somente a usuarios logados
+//'midleware'=>'auth:api ultilzia token para verificar acesso
+//so pode acessar a rota quem tiver um token  que deve ser enviado juntamente a requisição
+
+$this->group(['namespace'=>'Api', 'middleware'=>'auth:api'], function(){
+  $this->apiResource('clientes','ClienteApiController');
 });
-
-
-
-
-//gerar o controller onde irá realizar a autenticação
-Route::post('/register', 'AuthController@register');
-Route::post('/login', 'AuthController@login');
-Route::post('/logout', 'AuthController@logout');
-
-Route::post('/login-refresh', 'AuthController@refreshToken');
